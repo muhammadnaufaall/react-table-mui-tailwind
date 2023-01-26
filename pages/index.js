@@ -5,6 +5,7 @@ import {
   csvOptions,
 } from "@mui/x-data-grid";
 import Head from "next/head";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -55,16 +56,16 @@ export default function Home(commentList) {
       renderCell: (params) => {
         return (
           <div className='flex gap-2 justify-center items-center mx-auto'>
-            <button
-              onClick={() => router.push("/detail/" + params.row.id)}
+            <Link
+              href={"/detail/" + params.row.id}
               className='border border-green-500 hover:bg-green-700 text-green-500 hover:text-white hover:border-none font-bold py-2 px-4 rounded'>
               View
-            </button>
-            <button
-              onClick={() => router.push("/edit/" + params.row.id)}
+            </Link>
+            <Link
+              href={"/edit/" + params.row.id}
               className='border border-blue-500 hover:bg-blue-700 text-blue-500 hover:text-white hover:border-none font-bold py-2 px-4 rounded'>
               Edit
-            </button>
+            </Link>
             <button className='border border-red-500 hover:bg-red-700 text-red-500 hover:text-white hover:border-none font-bold py-2 px-4 rounded'>
               Delete
             </button>
@@ -78,11 +79,11 @@ export default function Home(commentList) {
     return (
       <div className='flex justify-end items-center pr-5 gap-3 pt-5'>
         <div>
-          <button
+          <Link
             className='border border-blue-500 hover:bg-blue-700 text-blue-500 hover:text-white hover:border-none font-bold py-2 px-4 rounded'
-            onClick={() => router.push("create/")}>
+            href={"create/"}>
             Tambah Komentar
-          </button>
+          </Link>
         </div>
         <GridToolbarContainer className='border-blue-600 px-2 py-1 border rounded text-white'>
           <GridToolbarExport />
